@@ -1,0 +1,25 @@
+<div class="board-overview">
+  <div *ngFor="let board of boards$ | async">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ board.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Created at: {{ board.createdAt | date: "dd.MM.yyyy, HH:mm" }}</p>
+      </mat-card-content>
+      <mat-card-footer class="example-card-footer">
+        <mat-chip-set aria-label="Chihuahua traits">
+          <mat-chip>{{ board.status }}</mat-chip>
+          <mat-chip>Open</mat-chip>
+          <mat-chip (click)="deleteBoard(board.id)">Delete</mat-chip>
+        </mat-chip-set>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+
+<div class="create-board">
+    <label for="createBoard" style="margin-right: 12px">Create a new board</label>
+    <input id="createBoard" placeholder="Board name" [(ngModel)]="name">
+    <button (click)="createBoard(name)">Create</button>
+</div>

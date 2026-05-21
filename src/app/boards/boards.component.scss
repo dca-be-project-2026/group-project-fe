@@ -1,0 +1,18 @@
+.board-overview {
+  display: flex;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-card-footer {
+  padding: 16px;
+}
+
+.create-board {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5rem;
+}
