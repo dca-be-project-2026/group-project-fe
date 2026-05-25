@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="form" class="form-layout">
+    <input name="title" id="title" placeholder="title" formControlName="title">
+    <input name="description" id="description" placeholder="description" formControlName="description">
+    <select name="status" id="status" formControlName="status">
+        <option value="todo">To Do</option>
+        <option value="in_progress">In Progress</option>
+        <option value="done">Done</option>
+    </select>
+    <select name="priority" id="priority" formControlName="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select> 
+    <input name="dueDate" id="dueDate" placeholder="Due Date" formControlName="dueDate">
+    <button type="submit" (click)="submit()">Abschicken</button>
+</form>
+
+  <mat-dialog-actions align="end">
+    <button matButton mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>
