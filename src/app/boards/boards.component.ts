@@ -5,6 +5,7 @@ import { AsyncPipe, DatePipe, NgForOf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class BoardsComponent implements OnInit {
 
   apiService = inject(ApiService);
+  router = inject(Router);
 
   name: string = '';
 
@@ -30,6 +32,10 @@ export class BoardsComponent implements OnInit {
 
   createBoard(name: string) {
     this.apiService.createBoard(name).subscribe(() => this.getBoards());
+  }
+
+  openBoard(id: string) {
+    this.router.navigate(['/boards', id])
   }
 
   deleteBoard(id: string) {
