@@ -20,14 +20,22 @@ export class BoardComponent implements OnInit {
   board: any;
   tasks$: Observable<any[]> = new Observable<any[]>();
 
-  ngOnInit(): void {
+  loadTasks() {
     const boardId = this.route.snapshot.params['boardId'];
     this.apiService.getBoard(boardId).subscribe(res => {
       this.board = res;
     })
-    this.tasks$ = this.apiService.getTasks(boardId).pipe(
+    this.tasks$ = this.apiService.getTasksForBoard(boardId).pipe(
       map(res => res.data)
-    );
+    )
+  }
+
+  ngOnInit(): void {
+    this.loadTasks();
+  }
+
+  deleteTask(taskId: string) {
+    this.apiService.deleteTask(taskId).subscribe(() => this.loadTasks());
   }
 
 
