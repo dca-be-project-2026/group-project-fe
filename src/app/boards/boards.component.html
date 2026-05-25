@@ -10,7 +10,7 @@
       <mat-card-footer class="example-card-footer">
         <mat-chip-set aria-label="Chihuahua traits">
           <mat-chip>{{ board.status }}</mat-chip>
-          <mat-chip>Open</mat-chip>
+          <mat-chip (click)="openBoard(board.id)">Open</mat-chip>
           <mat-chip (click)="deleteBoard(board.id)">Delete</mat-chip>
         </mat-chip-set>
       </mat-card-footer>
