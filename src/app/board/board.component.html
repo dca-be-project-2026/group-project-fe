@@ -17,7 +17,7 @@
         <mat-chip-set aria-label="Chihuahua traits">
           <mat-chip>{{ task.status }}</mat-chip>
           <mat-chip>Open</mat-chip>
-          <mat-chip>Delete</mat-chip>
+          <mat-chip (click)="deleteTask(task.id)">Delete</mat-chip>
         </mat-chip-set>
       </mat-card-footer>
     </mat-card>

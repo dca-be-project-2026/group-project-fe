@@ -23,16 +23,20 @@ export class ApiService {
     return this.http.get<{data: any}>(`${this.API_URL}/boards/${id}`);
   }
 
-  getTasks(boardId: string) {
-    return this.http.get<{data: any}>(`${this.API_URL}/boards/${boardId}/tasks`);
-  }
-
+  
   createBoard(name: string) {
     return this.http.post<BoardsResponse>(this.API_URL + '/boards', { name })
   }
-
+  
   deleteBoard(id: string) {
     return this.http.delete<BoardsResponse>(`${this.API_URL}/boards/${id}`)
   }
+  
+  getTasksForBoard(boardId: string) {
+    return this.http.get<BoardsResponse>(`${this.API_URL}/tasks/${boardId}/tasks`);
+  }
 
+  deleteTask(taskId: string) {
+    return this.http.delete<BoardsResponse>(`${this.API_URL}/tasks/${taskId}`);
+  }
 }
