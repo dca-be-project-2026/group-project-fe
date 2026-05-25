@@ -7,13 +7,12 @@ interface BoardsResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  API_URL = 'http://localhost:3000';
 
-  API_URL = 'http://localhost:3000'
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getBoards() {
     return this.http.get<BoardsResponse>(this.API_URL + '/boards');
@@ -24,19 +23,22 @@ export class ApiService {
   }
 
   addTask(boardId: string, form: any) {
-    return this.http.post<{ data: any }>(`${this.API_URL}/tasks/${boardId}/tasks`,  form );
+    return this.http.post<{ data: any }>(
+      `${this.API_URL}/tasks/${boardId}`,
+      form,
+    );
   }
 
   createBoard(name: string) {
-    return this.http.post<BoardsResponse>(this.API_URL + '/boards', { name })
+    return this.http.post<BoardsResponse>(this.API_URL + '/boards', { name });
   }
 
   deleteBoard(id: string) {
-    return this.http.delete<BoardsResponse>(`${this.API_URL}/boards/${id}`)
+    return this.http.delete<BoardsResponse>(`${this.API_URL}/boards/${id}`);
   }
 
   getTasksForBoard(boardId: string) {
-    return this.http.get<BoardsResponse>(`${this.API_URL}/tasks/${boardId}/tasks`);
+    return this.http.get<BoardsResponse>(`${this.API_URL}/tasks/${boardId}`);
   }
 
   deleteTask(taskId: string) {
